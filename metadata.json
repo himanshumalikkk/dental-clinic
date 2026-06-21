@@ -1,0 +1,6 @@
+{
+  "name": "Celtic Smile Clinic",
+  "description": "Unmatched precision. An award-winning luxury visual brand experience and Dublin's premier dental practice.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

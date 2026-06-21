@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@300;400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-forest-50: #f4f7f5;
+  --color-forest-100: #e2ebe5;
+  --color-forest-200: #c5d8cc;
+  --color-forest-300: #9cbdab;
+  --color-forest-400: #6ca083;
+  --color-forest-500: #498463;
+  --color-forest-650: #133924;
+  --color-forest-800: #0e3a24;
+  --color-forest-900: #0c311e;
+  --color-forest-950: #061f12;
+
+  --color-gold-50: #fbf7f0;
+  --color-gold-100: #f5edd9;
+  --color-gold-200: #eaddbe;
+  --color-gold-300: #dac9a0;
+  --color-gold-400: #cbb483;
+  --color-gold-500: #b99d63;
+  --color-gold-600: #a78852;
+  --color-gold-700: #8c7141;
+  --color-stone-850: #20201d;
+  --color-cream: #f5f2ea;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Luxury cursor interactive smoothing, buttery smooth easing curves */
+button, a {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  transition-duration: 400ms;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
