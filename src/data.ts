@@ -5,27 +5,47 @@
 
 import { Treatment, GalleryItem, BeforeAfterCase, TeamMember, Testimony, TechFeature } from "./types";
 
+import heroSmile from "./assets/images/luxury_ireland_hero_smile_1782015338714.jpg";
+import clinicSpace from "./assets/images/luxury_clinic_space_1782015353601.jpg";
+import dentistTreatment from "./assets/images/dentist_treatment_patient_1782019147498.jpg";
+import technology from "./assets/images/luxury_dental_technology_1782015368413.jpg";
+import perfectSmileDetail from "./assets/images/perfect_natural_smile_detail_1782015384510.jpg";
+import irelandCoastal from "./assets/images/ireland_calm_coastal_1782015398611.jpg";
+import beforeSmileMacro from "./assets/images/before_smile_macro_1782016382776.jpg";
+import afterSmileMacro from "./assets/images/after_smile_macro_1782016398340.jpg";
+import orthoAlignerTray from "./assets/images/ortho_aligner_tray_1782016413641.jpg";
+import whiteningPatient from "./assets/images/whitening_patient_1782016427534.jpg";
+import drSinead from "./assets/images/dr_sinead_portrait_1782016441789.jpg";
+import drLiam from "./assets/images/dr_liam_portrait_1782016456512.jpg";
+import precisionVeneer from "./assets/images/precision_veneer_sculpting_1782016470759.jpg";
+import consultSuite from "./assets/images/consult_suite_interior_1782016486736.jpg";
+import patientSaoirse from "./assets/images/patient_saoirse_smile_1782016512397.jpg";
+import patientCillian from "./assets/images/patient_cillian_smile_1782016525595.jpg";
+import silverPatient from "./assets/images/silver_patient_smile_1782018371914.jpg";
+import dentistTools from "./assets/images/dentist_tools_tray_1782018387763.jpg";
+import veneersOnModel from "./assets/images/veneers_on_model_1782018405037.jpg";
+
 // Bespoke images generated for the app
 export const CustomImages = {
-  heroSmile: "/src/assets/images/luxury_ireland_hero_smile_1782015338714.jpg",
-  clinicSpace: "/src/assets/images/luxury_clinic_space_1782015353601.jpg",
-  dentistTreatment: "/src/assets/images/dentist_treatment_patient_1782019147498.jpg",
-  technology: "/src/assets/images/luxury_dental_technology_1782015368413.jpg",
-  perfectSmileDetail: "/src/assets/images/perfect_natural_smile_detail_1782015384510.jpg",
-  irelandCoastal: "/src/assets/images/ireland_calm_coastal_1782015398611.jpg",
-  beforeSmileMacro: "/src/assets/images/before_smile_macro_1782016382776.jpg",
-  afterSmileMacro: "/src/assets/images/after_smile_macro_1782016398340.jpg",
-  orthoAlignerTray: "/src/assets/images/ortho_aligner_tray_1782016413641.jpg",
-  whiteningPatient: "/src/assets/images/whitening_patient_1782016427534.jpg",
-  drSinead: "/src/assets/images/dr_sinead_portrait_1782016441789.jpg",
-  drLiam: "/src/assets/images/dr_liam_portrait_1782016456512.jpg",
-  precisionVeneer: "/src/assets/images/precision_veneer_sculpting_1782016470759.jpg",
-  consultSuite: "/src/assets/images/consult_suite_interior_1782016486736.jpg",
-  patientSaoirse: "/src/assets/images/patient_saoirse_smile_1782016512397.jpg",
-  patientCillian: "/src/assets/images/patient_cillian_smile_1782016525595.jpg",
-  silverPatient: "/src/assets/images/silver_patient_smile_1782018371914.jpg",
-  dentistTools: "/src/assets/images/dentist_tools_tray_1782018387763.jpg",
-  veneersOnModel: "/src/assets/images/veneers_on_model_1782018405037.jpg"
+  heroSmile,
+  clinicSpace,
+  dentistTreatment,
+  technology,
+  perfectSmileDetail,
+  irelandCoastal,
+  beforeSmileMacro,
+  afterSmileMacro,
+  orthoAlignerTray,
+  whiteningPatient,
+  drSinead,
+  drLiam,
+  precisionVeneer,
+  consultSuite,
+  patientSaoirse,
+  patientCillian,
+  silverPatient,
+  dentistTools,
+  veneersOnModel
 };
 
 export const TREATMENTS: Treatment[] = [
