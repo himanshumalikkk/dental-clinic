@@ -53,10 +53,10 @@ export default function BeforeAfterSlider({ cases }: BeforeAfterSliderProps) {
 
   // Set initial beautiful default slide animation loop or let the user explore
   return (
-    <div id="before-after-section" className="w-full bg-stone-950 text-stone-100 py-24 sm:py-32 px-6 overflow-hidden">
+    <div id="before-after-section" className="w-full bg-stone-950 text-stone-100 pt-12 pb-16 sm:py-32 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Minimal Magazine Heading */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16 items-end">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-8 sm:mb-16 items-end">
           <div className="md:col-span-8">
             <span className="font-mono text-xs tracking-[0.25em] text-gold-400 uppercase block mb-4">
               [ 02 / ARTISTRY TRANSFORMATION GALLERY ]

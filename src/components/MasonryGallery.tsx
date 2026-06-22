@@ -138,11 +138,11 @@ export default function MasonryGallery() {
   );
 
   return (
-    <section id="gallery-section" className="py-24 sm:py-32 bg-[#FAF8F5] border-t border-[#0C3A2B]/10 px-6 scroll-mt-20">
+    <section id="gallery-section" className="pt-12 pb-12 sm:py-32 bg-[#FAF8F5] border-t border-[#0C3A2B]/10 px-6 scroll-mt-20">
       <div className="max-w-7xl mx-auto">
         
         {/* Gallery Visual Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 items-end">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8 sm:mb-16 items-end">
           <div className="lg:col-span-8 text-left">
             <span className="font-mono text-xs tracking-[0.25em] text-[#0C3A2B] uppercase block mb-4 font-semibold">
               [ 02 / ARTISTRY & SCIENCE GALLERY ]
@@ -157,7 +157,7 @@ export default function MasonryGallery() {
         </div>
 
         {/* Dynamic Category Filtering Buttons */}
-        <div className="flex flex-wrap gap-2.5 mb-12 pb-2 border-b border-[#0C3A2B]/10 max-w-3xl">
+        <div className="flex flex-wrap gap-2.5 mb-8 sm:mb-12 pb-2 border-b border-[#0C3A2B]/10 max-w-3xl">
           {(["All", "Space", "Artistry", "Technology", "Science"] as const).map((filter) => {
             const isActive = selectedFilter === filter;
             return (
@@ -179,7 +179,7 @@ export default function MasonryGallery() {
         {/* Responsive CSS columns layout for authentic Masonry aesthetic */}
         <motion.div 
           layout
-          className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 [column-fill:_balance]"
+          className="columns-1 md:columns-2 lg:columns-3 gap-6 [column-fill:_balance]"
         >
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item) => (

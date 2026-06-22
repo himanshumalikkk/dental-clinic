@@ -24,6 +24,10 @@ import patientCillian from "./assets/images/patient_cillian_smile_1782016525595.
 import silverPatient from "./assets/images/silver_patient_smile_1782018371914.jpg";
 import dentistTools from "./assets/images/dentist_tools_tray_1782018387763.jpg";
 import veneersOnModel from "./assets/images/veneers_on_model_1782018405037.jpg";
+import cosmeticBeforeAfter from "./assets/images/cosmetic_before_after_1782144836735.jpg";
+import dentalImplantDetail from "./assets/images/dental_implant_detail_1782145109346.jpg";
+import invisalignOrtho from "./assets/images/invisalign_ortho_before_after_1782147140815.jpg";
+import generalDentistryTreatment from "./assets/images/general_dentistry_treatment_1782147439371.jpg";
 
 // Bespoke images generated for the app
 export const CustomImages = {
@@ -45,7 +49,11 @@ export const CustomImages = {
   patientCillian,
   silverPatient,
   dentistTools,
-  veneersOnModel
+  veneersOnModel,
+  cosmeticBeforeAfter,
+  dentalImplantDetail,
+  invisalignOrtho,
+  generalDentistryTreatment
 };
 
 export const TREATMENTS: Treatment[] = [

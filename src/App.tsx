@@ -12,7 +12,6 @@ import {
   Phone, 
   Clock, 
   Award,
-  ChevronRight,
   Sparkles
 } from "lucide-react";
 
@@ -23,14 +22,48 @@ import MasonryGallery from "./components/MasonryGallery";
 
 import { 
   BEFORE_AFTER_CASES, 
-  TREATMENTS, 
   CustomImages 
 } from "./data";
 
-export default function App() {
-  const [activeTreatmentTab, setActiveTreatmentTab] = useState(TREATMENTS[0].id);
-  const selectedTreatment = TREATMENTS.find(t => t.id === activeTreatmentTab) || TREATMENTS[0];
+const SECTION_SERVICES = [
+  {
+    id: "cosmetic",
+    tag: "[ 01 / COSMETIC ARTISTRY ]",
+    title: "Cosmetic Dentistry",
+    description: "Enhance your smile with modern cosmetic treatments designed for natural, beautiful results.",
+    image: CustomImages.cosmeticBeforeAfter,
+  },
+  {
+    id: "implants",
+    tag: "[ 02 / RECONSTRUCTIVE ]",
+    title: "Dental Implants",
+    description: "Permanent, natural-looking solutions for missing teeth.",
+    image: CustomImages.dentalImplantDetail,
+  },
+  {
+    id: "invisalign",
+    tag: "[ 03 / MICRO-ALIGNMENT ]",
+    title: "Invisalign & Orthodontics",
+    description: "Discreet teeth straightening designed around your lifestyle.",
+    image: CustomImages.invisalignOrtho,
+  },
+  {
+    id: "general",
+    tag: "[ 04 / HEALTH SANCTUARY ]",
+    title: "General Dentistry",
+    description: "Comprehensive dental care focused on long-term oral health.",
+    image: CustomImages.generalDentistryTreatment,
+  },
+  {
+    id: "emergency",
+    tag: "[ 05 / CLINICAL RESPONSE ]",
+    title: "Emergency Dentistry",
+    description: "Fast access to expert dental care when you need it most.",
+    image: CustomImages.dentistTreatment,
+  }
+];
 
+export default function App() {
   const handleScrollTo = (id: string) => {
     const element = document.querySelector(id);
     if (element) {
@@ -173,7 +206,7 @@ export default function App() {
 
       
       {/* ----------------- SECTION 1 - SERVICE ATELIER ----------------- */}
-      <section id="service-section" className="py-24 sm:py-32 bg-[#FAF8F5] border-y border-[#0C3A2B]/10 px-6 scroll-mt-20">
+      <section id="service-section" className="pt-12 pb-16 sm:py-32 bg-[#FAF8F5] border-y border-[#0C3A2B]/10 px-6 scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           
           {/* Section Introduction */}
@@ -182,7 +215,7 @@ export default function App() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full mb-16 border-b border-[#0C3A2B]/15 pb-12 text-left"
+            className="w-full mb-8 sm:mb-16 border-b border-[#0C3A2B]/15 pb-8 sm:pb-12 text-left"
           >
             <span className="font-mono text-xs tracking-[0.25em] text-[#0C3A2B] uppercase block mb-5 font-semibold">
               [ 01 / SERVICE ATELIER ]
@@ -199,77 +232,79 @@ export default function App() {
             </div>
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 45 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
-          >
-            
-            {/* List selector */}
-            <div className="lg:col-span-5 flex flex-col gap-3">
-              {TREATMENTS.map((treatment) => {
-                const isActive = activeTreatmentTab === treatment.id;
-                return (
-                  <button
-                    key={treatment.id}
-                    onClick={() => setActiveTreatmentTab(treatment.id)}
-                    className={`w-full text-left p-6 sm:p-8 rounded-sm transition-all duration-500 flex flex-col border ${
-                      isActive
-                        ? "bg-[#0C3A2B] border-[#0C3A2B] shadow-xl text-white translate-x-1"
-                        : "bg-white border-[#0C3A2B]/10 text-stone-900 hover:bg-stone-50"
-                    }`}
+          {/* Alternating Editorial Sections */}
+          <div className="flex flex-col">
+            {SECTION_SERVICES.map((service, index) => {
+              const isEven = index % 2 === 0;
+              return (
+                <div 
+                  key={service.id}
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-20 items-center py-8 sm:py-24 border-b last:border-0 border-[#0C3A2B]/10"
+                >
+                  {/* Image container (occupies 60-70% on lg screen, responsive aspect-video/aspect-square) */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                    className={`col-span-12 lg:col-span-8 ${isEven ? "" : "lg:order-2"}`}
                   >
-                    <div className="flex justify-between items-center w-full mb-3">
-                      <span className={`font-mono text-[10px] uppercase tracking-widest ${isActive ? "text-[#b99d63]" : "text-stone-400"}`}>
-                        0{TREATMENTS.indexOf(treatment) + 1} // {treatment.category}
-                      </span>
-                      {isActive && <span className="w-2 h-2 rounded-full bg-[#b99d63]"></span>}
-                    </div>
-                    
-                    <h3 className="font-serif text-2xl sm:text-2xl tracking-tighter mb-2">
-                      {treatment.title}
+                    {(() => {
+                      // On mobile we use aspect-square so the 1:1 clean square source images show completely uncropped.
+                      // On desktop or tablet, we maintain sm:aspect-[16/10] to keep the landscape layout unchanged.
+                      let aspectClass = "aspect-square sm:aspect-[16/10]";
+                      let objectPositionClass = "object-center";
+
+                      if (service.id === "general") {
+                        objectPositionClass = "object-center sm:object-[center_28%]";
+                      }
+
+                      return (
+                        <div className={`relative ${aspectClass} overflow-hidden rounded-xs bg-[#e2ebe5] border border-stone-200/40 shadow-sm group`}>
+                          <img
+                            src={service.image}
+                            alt={service.title}
+                            className={`w-full h-full object-cover ${objectPositionClass} transition-transform duration-[1400ms] ease-out group-hover:scale-[1.025] filter brightness-[0.98] contrast-[1.01]`}
+                            referrerPolicy="no-referrer"
+                          />
+                          {/* Elegant slow-fade overlay */}
+                          <div className="absolute inset-0 bg-[#0C3A2B]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+                        </div>
+                      );
+                    })()}
+                  </motion.div>
+
+                  {/* Content Container (beautiful luxury typography aligned) */}
+                  <motion.div
+                    initial={{ opacity: 0, x: isEven ? 20 : -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+                    className={`col-span-12 lg:col-span-4 flex flex-col justify-center text-left ${isEven ? "" : "lg:order-1"}`}
+                  >
+                    <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-[#b99d63] uppercase block mb-3 font-semibold">
+                      {service.tag}
+                    </span>
+                    <h3 className="font-serif text-3xl sm:text-4xl lg:text-[42px] font-normal tracking-tight text-[#0C3A2B] leading-tight mb-4">
+                      {service.title}
                     </h3>
-                    
-                    <div className={`flex items-center gap-1 text-[11px] font-mono uppercase tracking-[0.15em] ${isActive ? "text-[#b99d63]" : "text-[#0C3A2B]"} mt-2 group`}>
-                      <span>Explore details</span>
-                      <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                    <p className="text-stone-700 text-sm sm:text-base font-sans tracking-wide leading-relaxed mb-8 font-light max-w-sm">
+                      {service.description}
+                    </p>
+                    <div>
+                      <button
+                        onClick={() => handleScrollTo("#contact-section")}
+                        className="group inline-flex items-center gap-2 border-b border-[#0C3A2B]/20 pb-1.5 text-[#0C3A2B] hover:text-[#b99d63] hover:border-[#b99d63]/60 font-mono text-xs uppercase tracking-[0.25em] font-semibold transition-all duration-300 cursor-pointer"
+                      >
+                        <span>Request reservation</span>
+                        <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#b99d63]" />
+                      </button>
                     </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Visual Detail Window (80% Image / 20% Text) */}
-            <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-xs border border-[#0C3A2B]/15 shadow-sm relative">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-xs bg-[#f4f7f5] mb-8 border border-stone-100">
-                <img
-                  src={selectedTreatment.image}
-                  alt={selectedTreatment.title}
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-103"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-
-              {/* Dynamic details description */}
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 text-left">
-                <div>
-                  <span className="font-mono text-[9px] tracking-widest text-[#0C3A2B]/60 uppercase block mb-1 font-semibold">
-                    {selectedTreatment.meta}
-                  </span>
-                  <p className="text-stone-700 text-xs sm:text-sm max-w-lg leading-relaxed font-sans">
-                    {selectedTreatment.description}
-                  </p>
+                  </motion.div>
                 </div>
-                <div className="bg-[#f4f7f5] border border-[#0C3A2B]/10 px-4 py-2 text-right rounded-xs shrink-0 font-sans">
-                  <span className="font-mono text-[8px] text-[#0C3A2B]/50 uppercase block font-semibold">CLINICAL INTERVAL</span>
-                  <span className="font-serif text-sm font-semibold text-[#0C3A2B]">{selectedTreatment.duration}</span>
-                </div>
-              </div>
-            </div>
-
-          </motion.div>
+              );
+            })}
+          </div>
 
         </div>
       </section>
@@ -283,7 +318,7 @@ export default function App() {
 
 
       {/* ----------------- SECTION 3 - CONTACT & SCHEDULING ----------------- */}
-      <section id="contact-section" className="py-24 sm:py-32 bg-[#FAF8F5] px-6 border-b border-[#0C3A2B]/10 scroll-mt-20">
+      <section id="contact-section" className="pt-12 pb-12 sm:py-32 bg-[#FAF8F5] px-6 border-b border-[#0C3A2B]/10 scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           
           <motion.div 
