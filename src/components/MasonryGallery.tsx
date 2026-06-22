@@ -202,8 +202,8 @@ export default function MasonryGallery() {
                     referrerPolicy="no-referrer"
                   />
                   
-                  {/* Subtle Dark Layer */}
-                  <div className="absolute inset-0 bg-stone-950/0 group-hover:bg-stone-950/50 transition-colors duration-500" />
+                  {/* Bottom Gradient Overlay on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
 
                   {/* Standard Floating Badge */}
                   <div className="absolute top-4 left-4 z-10">
@@ -212,28 +212,23 @@ export default function MasonryGallery() {
                     </span>
                   </div>
 
-                  {/* Hover-Triggered Interactive Overlay with Dental Health Tip */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] transform translate-y-2 group-hover:translate-y-0 z-10 pointer-events-none group-hover:pointer-events-auto">
+                  {/* Hover-Triggered Interactive Overlay - Clean & Minimalist, protecting image visibility */}
+                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] transform translate-y-2 group-hover:translate-y-0 z-20 pointer-events-none group-hover:pointer-events-auto">
                     
-                    {/* Sparkle decorative indicator */}
-                    <div className="flex items-center gap-1.5 text-gold-400 font-mono text-[10px] uppercase tracking-widest mb-2 font-bold select-none">
-                      <Sparkles className="w-3.5 h-3.5" />
-                      <span>Dental Health Tip</span>
-                    </div>
-
-                    {/* Interactive Tip Body */}
-                    <p className="text-white text-xs tracking-wide leading-relaxed font-sans font-medium mb-4 pr-2">
-                      {item.tip}
-                    </p>
-
                     {/* Bottom CTA bar inside overlay */}
-                    <div className="flex items-center justify-between border-t border-white/20 pt-3 select-none">
-                      <span className="text-white font-serif text-[15px] font-normal tracking-wide">
-                        {item.title}
-                      </span>
-                      <div className="flex items-center gap-1 text-[#b99d63] text-[9px] font-mono uppercase tracking-widest font-bold">
-                        <span>Read Detail</span>
-                        <Info className="w-3.5 h-3.5" />
+                    <div className="flex items-end justify-between border-t border-white/20 pt-4 select-none">
+                      <div className="flex flex-col text-left">
+                        <span className="text-white font-serif text-[15px] sm:text-[18px] font-normal tracking-wide leading-tight">
+                          {item.title}
+                        </span>
+                        <span className="text-stone-300 font-mono text-[9px] uppercase tracking-[0.2em] mt-1.5 font-bold">
+                          [ {item.category} Study ]
+                        </span>
+                      </div>
+                      
+                      <div className="flex items-center gap-1 bg-[#b99d63]/90 hover:bg-[#b99d63] text-stone-950 px-3 py-1.5 rounded-full text-[9px] font-mono uppercase tracking-widest font-bold shadow-md transition-all duration-300 hover:scale-[1.03] shrink-0">
+                        <span>Study details</span>
+                        <Info className="w-3 h-3" />
                       </div>
                     </div>
 
@@ -269,7 +264,7 @@ export default function MasonryGallery() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-[#061f12]/95 backdrop-blur-md z-[200] flex items-center justify-center p-4 sm:p-6 md:p-10 select-text"
+              className="fixed inset-0 bg-[#061f12]/95 backdrop-blur-md z-[200] overflow-y-auto flex items-start sm:items-center justify-center p-4 sm:p-6 md:p-8 select-text"
               onClick={() => setActiveItem(null)}
             >
               <motion.div
@@ -277,21 +272,21 @@ export default function MasonryGallery() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-[#FAF8F5] max-w-5xl w-full rounded-sm overflow-hidden border border-[#0C3A2B]/25 shadow-2xl grid grid-cols-1 lg:grid-cols-12 relative"
+                className="bg-[#FAF8F5] max-w-5xl w-full rounded-sm overflow-hidden border border-[#0C3A2B]/25 shadow-2xl grid grid-cols-1 lg:grid-cols-12 relative my-auto"
                 onClick={(e) => e.stopPropagation()} // Protect modal clicks
               >
                 
                 {/* Close absolute button */}
                 <button
                   onClick={() => setActiveItem(null)}
-                  className="absolute top-4 right-4 z-50 p-2.5 bg-stone-900/10 hover:bg-[#0C3A2B] text-stone-800 hover:text-white rounded-full transition-all duration-300 border border-[#0C3A2B]/15 cursor-pointer shadow-sm"
+                  className="absolute top-4 right-4 z-50 p-2.5 bg-[#FAF8F5]/90 hover:bg-[#0C3A2B] text-[#0C3A2B] hover:text-[#FAF8F5] rounded-full transition-all duration-300 border border-[#0C3A2B]/15 hover:border-transparent cursor-pointer shadow-md backdrop-blur-sm"
                   aria-label="Close detailed visual view"
                 >
                   <X className="w-4 h-4" />
                 </button>
-
+                
                 {/* Left Side: Large Visual Preview */}
-                <div className="lg:col-span-7 bg-stone-900 flex items-center justify-center relative aspect-video lg:aspect-auto min-h-[280px] lg:min-h-[480px]">
+                <div className="lg:col-span-7 bg-stone-900 flex items-center justify-center relative aspect-video lg:aspect-auto min-h-[240px] sm:min-h-[280px] lg:min-h-[480px]">
                   <img
                     src={activeItem.image}
                     alt={activeItem.title}
@@ -306,7 +301,7 @@ export default function MasonryGallery() {
                 </div>
 
                 {/* Right Side: Editorial Metadata and Healthcare Tip */}
-                <div className="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between text-left">
+                <div className="lg:col-span-5 p-6 sm:p-8 md:p-10 flex flex-col justify-between text-left">
                   
                   <div>
                     {/* Header Label */}

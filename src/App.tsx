@@ -60,7 +60,7 @@ export default function App() {
         <div className="absolute inset-y-0 left-0 w-full lg:w-[58%] h-[55%] sm:h-[60%] lg:h-full z-0 overflow-hidden pointer-events-none">
           <img
             src={CustomImages.silverPatient}
-            alt="Silver Patient Smile, Celtic Smile Clinic"
+            alt="Smiling Patient, Celtic Smile Clinic"
             className="w-full h-full object-cover scale-x-100 lg:-scale-x-100 object-[50%_22%] lg:object-[28%_center] brightness-[1.03] contrast-[1.01]"
             referrerPolicy="no-referrer"
           />
@@ -69,12 +69,12 @@ export default function App() {
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#061f12]/60 to-[#061f12] lg:hidden z-10" />
         </div>
 
-        {/* Background Layer 2: Right clinical luxury space subtly blurred */}
-        <div className="absolute inset-y-0 right-0 w-full lg:w-[65%] h-full z-0 overflow-hidden pointer-events-none opacity-20 hidden lg:block">
+        {/* Background Layer 2: Right clinical luxury space (now crisp and clear with dentist treatment photo) */}
+        <div className="absolute inset-y-0 right-0 w-full lg:w-[65%] h-full z-0 overflow-hidden pointer-events-none opacity-30 hidden lg:block">
           <img
-            src={CustomImages.clinicSpace}
-            alt="Clinic interior design cozy spaces"
-            className="w-full h-full object-cover filter blur-[3px]"
+            src={CustomImages.dentistTreatment}
+            alt="Dental Treatment, Celtic Smile"
+            className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
           {/* Secondary fade from left to right */}
@@ -182,19 +182,21 @@ export default function App() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 mb-16 border-b border-[#0C3A2B]/15 pb-12"
+            className="w-full mb-16 border-b border-[#0C3A2B]/15 pb-12 text-left"
           >
-            <div className="max-w-xl text-left">
-              <span className="font-mono text-xs tracking-[0.25em] text-[#0C3A2B] uppercase block mb-4 font-semibold">
-                [ 01 / SERVICE ATELIER ]
-              </span>
-              <h2 className="font-serif text-4xl sm:text-6xl tracking-tight leading-[1.1] text-[#0C3A2B]">
+            <span className="font-mono text-xs tracking-[0.25em] text-[#0C3A2B] uppercase block mb-5 font-semibold">
+              [ 01 / SERVICE ATELIER ]
+            </span>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-baseline w-full">
+              <h2 className="lg:col-span-8 font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tighter leading-[1.05] text-[#0C3A2B]">
                 Precision Clinical Services
               </h2>
+              <div className="lg:col-span-4 self-end lg:self-auto">
+                <p className="text-stone-700 text-xs sm:text-sm tracking-tight leading-relaxed font-sans lg:pb-1 pb-0">
+                  We focus purely on custom-layered reconstructive work, clear aligning systems, and deep mineral whitening frameworks representing modern biological chemistry.
+                </p>
+              </div>
             </div>
-            <p className="text-stone-700 text-xs sm:text-sm tracking-wide max-w-sm font-sans leading-relaxed text-left">
-              We focus purely on custom-layered reconstructive work, clear aligning systems, and deep mineral whitening frameworks representing modern biological chemistry.
-            </p>
           </motion.div>
 
           <motion.div 
@@ -226,7 +228,7 @@ export default function App() {
                       {isActive && <span className="w-2 h-2 rounded-full bg-[#b99d63]"></span>}
                     </div>
                     
-                    <h3 className="font-serif text-2xl sm:text-2xl tracking-tight mb-2">
+                    <h3 className="font-serif text-2xl sm:text-2xl tracking-tighter mb-2">
                       {treatment.title}
                     </h3>
                     

@@ -16,7 +16,23 @@ export default function BeforeAfterSlider({ cases }: BeforeAfterSliderProps) {
   const [activeCaseIndex, setActiveCaseIndex] = useState(0);
   const [sliderPosition, setSliderPosition] = useState(50); // percentage (0-100)
   const containerRef = useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = useState<number>(0);
   const currentCase = cases[activeCaseIndex];
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    
+    setContainerWidth(containerRef.current.clientWidth || 500);
+
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setContainerWidth(entry.contentRect.width);
+      }
+    });
+
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, [activeCaseIndex]);
 
   const handlePointerMove = (e: React.PointerEvent) => {
     if (!containerRef.current) return;
@@ -60,7 +76,7 @@ export default function BeforeAfterSlider({ cases }: BeforeAfterSliderProps) {
         <div className="relative w-full aspect-[4/3] md:aspect-[16/9] rounded-sm overflow-hidden border border-stone-800 bg-stone-900 group select-none">
           <div
             ref={containerRef}
-            className="relative w-full h-full cursor-ew-resize overflow-hidden"
+            className="relative w-full h-full cursor-ew-resize overflow-hidden touch-none"
             onPointerMove={handlePointerMove}
             onTouchMove={handleTouchMove}
           >
@@ -83,8 +99,8 @@ export default function BeforeAfterSlider({ cases }: BeforeAfterSliderProps) {
               <img
                 src={currentCase.beforeImage}
                 alt="Patient smile before restoration"
-                className="absolute inset-0 w-full h-full object-cover max-w-none"
-                style={{ width: containerRef.current?.offsetWidth || "100%", height: "100%" }}
+                className="absolute inset-0 h-full object-cover max-w-none"
+                style={{ width: containerWidth ? `${containerWidth}px` : "100%", height: "100%" }}
                 referrerPolicy="no-referrer"
               />
             </div>
