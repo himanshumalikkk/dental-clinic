@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Treatment, GalleryItem, BeforeAfterCase, TeamMember, Testimony, TechFeature } from "./types";
+import { Treatment, BeforeAfterCase, TeamMember, Testimony, TechFeature } from "./types";
 
 import heroSmile from "./assets/images/luxury_ireland_hero_smile_1782015338714.jpg";
 import clinicSpace from "./assets/images/luxury_clinic_space_1782015353601.jpg";
@@ -75,57 +75,6 @@ export const TREATMENTS: Treatment[] = [
     duration: "90 Minute Session",
     image: CustomImages.whiteningPatient,
     meta: "Enamel-safe mineral composite"
-  }
-];
-
-export const GALLERY_ITEMS: GalleryItem[] = [
-  {
-    id: "gallery-1",
-    title: "The Sanctuary Lounge",
-    category: "Space",
-    image: CustomImages.clinicSpace,
-    aspectRatio: "aspect-[16/9]",
-    size: "large"
-  },
-  {
-    id: "gallery-2",
-    title: "Precision Digital Crafting",
-    category: "Artistry",
-    image: CustomImages.precisionVeneer,
-    aspectRatio: "aspect-[3/4]",
-    size: "medium"
-  },
-  {
-    id: "gallery-3",
-    title: "Architectural Serenity",
-    category: "Space",
-    image: CustomImages.irelandCoastal,
-    aspectRatio: "aspect-[4/3]",
-    size: "medium"
-  },
-  {
-    id: "gallery-4",
-    title: "High-Fashion Editorial Integration",
-    category: "Experience",
-    image: CustomImages.heroSmile,
-    aspectRatio: "aspect-[3/4]",
-    size: "small"
-  },
-  {
-    id: "gallery-5",
-    title: "The Atelier Consult Suite",
-    category: "Space",
-    image: CustomImages.consultSuite,
-    aspectRatio: "aspect-[16/9]",
-    size: "large"
-  },
-  {
-    id: "gallery-6",
-    title: "Precision Micro-Sculpting",
-    category: "Artistry",
-    image: CustomImages.technology,
-    aspectRatio: "aspect-square",
-    size: "small"
   }
 ];
 

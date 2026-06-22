@@ -43,10 +43,10 @@ export default function BeforeAfterSlider({ cases }: BeforeAfterSliderProps) {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16 items-end">
           <div className="md:col-span-8">
             <span className="font-mono text-xs tracking-[0.25em] text-gold-400 uppercase block mb-4">
-              [ 03 / RESTORATIVE SYMMETRY ]
+              [ 02 / ARTISTRY TRANSFORMATION GALLERY ]
             </span>
             <h2 className="font-serif text-4xl sm:text-6xl tracking-tight text-white max-w-2xl leading-[1.1]">
-              The Micro-Ceramic Renaissance
+              Symmetry & Smile Design
             </h2>
           </div>
           <div className="md:col-span-4">

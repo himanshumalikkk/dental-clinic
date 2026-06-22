@@ -20,11 +20,9 @@ export default function Header() {
   }, []);
 
   const menuItems = [
-    { label: "The Sanctuary", href: "#sanctuary-section" },
-    { label: "Our Philosophy", href: "#philosophy-section" },
-    { label: "Artistry Gallery & Restorations", href: "#gallery-portfolio-section" },
-    { label: "Symmetry Transformation", href: "#before-after-section" },
-    { label: "Meet the Sculptors", href: "#sculptors-section" },
+    { label: "SERVICES", href: "#service-section" },
+    { label: "GALLERY", href: "#gallery-section" },
+    { label: "CONTACT", href: "#contact-section" },
   ];
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -48,13 +46,13 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-full z-45 transition-all duration-500 ${
           scrollActive
-            ? "bg-[#faf9f6]/90 backdrop-blur-md border-b border-stone-200/50 py-4"
+            ? "bg-[#faf9f6]/95 backdrop-blur-md border-b border-stone-200/50 py-4"
             : "bg-transparent py-6 sm:py-8"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between font-sans">
           
           {/* LUXURY EMBLEM / BRAND LOGO */}
           <a
@@ -64,7 +62,9 @@ export default function Header() {
           >
             {/* Elegant Continuous Shamrock Loop SVG */}
             <svg
-              className="w-8 h-8 text-[#0C3A2B] transition-transform duration-500 group-hover:rotate-12"
+              className={`w-8 h-8 transition-transform duration-500 group-hover:rotate-12 ${
+                scrollActive ? "text-[#0C3A2B]" : "text-[#b99d63]"
+              }`}
               viewBox="0 0 100 100"
               fill="none"
               stroke="currentColor"
@@ -82,10 +82,14 @@ export default function Header() {
               <path d="M 50 85 Q 56 94 65 95" strokeWidth="4" />
             </svg>
             <div className="flex flex-col">
-              <span className="font-serif text-base sm:text-lg font-bold text-[#0C3A2B] tracking-[0.1em] uppercase leading-tight">
+              <span className={`font-serif text-base sm:text-lg font-bold tracking-[0.1em] uppercase leading-tight transition-colors duration-300 ${
+                scrollActive ? "text-[#0C3A2B]" : "text-white"
+              }`}>
                 Celtic
               </span>
-              <span className="font-sans text-[9px] font-semibold tracking-[0.2em] text-[#0C3A2B] uppercase mt-0.5 leading-none">
+              <span className={`font-sans text-[9px] font-semibold tracking-[0.2em] uppercase mt-0.5 leading-none transition-colors duration-300 ${
+                scrollActive ? "text-[#0C3A2B]" : "text-[#b99d63]"
+              }`}>
                 Smile Clinic
               </span>
             </div>
@@ -93,36 +97,42 @@ export default function Header() {
 
           {/* DESKTOP MINIMALIST LINKS */}
           <nav className="hidden lg:flex items-center gap-8">
-            {[
-              { label: "The Sanctuary", href: "#sanctuary-section" },
-              { label: "Our Philosophy", href: "#philosophy-section" },
-              { label: "Artistry Gallery & Restorations", href: "#gallery-portfolio-section" },
-              { label: "Symmetry Transformation", href: "#before-after-section" },
-              { label: "Meet the Sculptors", href: "#sculptors-section" },
-            ].map((item) => (
+            {menuItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleScrollTo(e, item.href)}
-                className="text-[10px] font-mono uppercase tracking-[0.15em] text-[#0C3A2B]/80 hover:text-[#0C3A2B] transition-colors duration-300 relative py-1 group"
+                className={`text-[10px] font-mono uppercase tracking-[0.15em] transition-colors duration-300 relative py-1 group ${
+                  scrollActive 
+                    ? "text-[#0C3A2B]/80 hover:text-[#0C3A2B]" 
+                    : "text-white/80 hover:text-white"
+                }`}
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#0C3A2B] group-hover:w-full transition-all duration-300"></span>
+                <span className={`absolute bottom-0 left-0 w-0 h-[1.5px] transition-all duration-300 group-hover:w-full ${
+                  scrollActive ? "bg-[#0C3A2B]" : "bg-[#b99d63]"
+                }`}></span>
               </a>
             ))}
           </nav>
 
           {/* DESKTOP BOOKING TRIGGERS / DUBLIN METADATA */}
           <div className="hidden lg:flex items-center gap-6">
-            <span className="font-mono text-[9px] text-stone-400 uppercase tracking-widest hidden xl:inline-flex items-center gap-1.5 border-r border-stone-200 pr-5">
-              <Compass className="w-3 h-3 text-gold-500 animate-spin-slow" />
+            <span className={`font-mono text-[9px] uppercase tracking-widest hidden xl:inline-flex items-center gap-1.5 border-r pr-5 transition-colors duration-300 ${
+              scrollActive ? "text-stone-400 border-stone-200" : "text-white/50 border-white/10"
+            }`}>
+              <Compass className={`w-3.5 h-3.5 animate-spin-slow transition-colors duration-300 ${scrollActive ? "text-gold-500" : "text-[#b99d63]"}`} />
               Fitzwilliam Sq, D2
             </span>
             
             <a
-              href="#concierge-booking-section"
-              onClick={(e) => handleScrollTo(e, "#concierge-booking-section")}
-              className="px-5 py-2.5 bg-stone-950 hover:bg-gold-500 text-white hover:text-stone-950 text-[10px] font-mono uppercase tracking-widest rounded-full transition-all duration-300 flex items-center gap-1 shadow-sm"
+              href="#contact-section"
+              onClick={(e) => handleScrollTo(e, "#contact-section")}
+              className={`px-5 py-2.5 text-[10px] font-mono uppercase tracking-widest rounded-full transition-all duration-300 flex items-center gap-1.5 shadow-sm ${
+                scrollActive
+                  ? "bg-[#0C3A2B] hover:bg-gold-500 text-white hover:text-stone-950"
+                  : "bg-white/5 hover:bg-white/15 border border-[#b99d63]/70 text-white"
+              }`}
             >
               Private Request
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -132,15 +142,21 @@ export default function Header() {
           {/* MOBILE BURGER LINK */}
           <div className="flex lg:hidden items-center gap-4">
             <a
-              href="#concierge-booking-section"
-              onClick={(e) => handleScrollTo(e, "#concierge-booking-section")}
-              className="px-3.5 py-1.5 bg-stone-950 hover:bg-gold-500 text-white hover:text-stone-950 text-[9px] font-mono uppercase tracking-widest rounded-full transition-all duration-300"
+              href="#contact-section"
+              onClick={(e) => handleScrollTo(e, "#contact-section")}
+              className={`px-3.5 py-1.5 text-[9px] font-mono uppercase tracking-widest rounded-full transition-all duration-300 ${
+                scrollActive
+                  ? "bg-[#0C3A2B] hover:bg-gold-400 text-white"
+                  : "bg-white/5 hover:bg-white/15 border border-[#b99d63]/70 text-white"
+              }`}
             >
               Book
             </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-stone-900 focus:outline-none p-1 cursor-pointer"
+              className={`focus:outline-none p-1 cursor-pointer transition-colors ${
+                scrollActive ? "text-stone-900" : "text-white"
+              }`}
             >
               {mobileMenuOpen ? <X className="w-6 h-6 stroke-[1.5]" /> : <Menu className="w-6 h-6 stroke-[1.5]" />}
             </button>
@@ -193,9 +209,9 @@ export default function Header() {
               </span>
               <div className="flex gap-6 mt-2">
                 <a
-                  href="#concierge-booking-section"
-                  onClick={(e) => handleScrollTo(e, "#concierge-booking-section")}
-                  className="px-6 py-3 bg-stone-950 hover:bg-gold-500 hover:text-sh-950 text-white text-xs font-mono uppercase tracking-widest text-center rounded-sm w-full"
+                  href="#contact-section"
+                  onClick={(e) => handleScrollTo(e, "#contact-section")}
+                  className="px-6 py-3 bg-stone-950 hover:bg-gold-500 hover:text-stone-950 text-white text-xs font-mono uppercase tracking-widest text-center rounded-sm w-full"
                 >
                   Request Private Invitation →
                 </a>
