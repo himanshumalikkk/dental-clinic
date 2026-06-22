@@ -56,17 +56,17 @@ export default function App() {
       {/* ----------------- HERO SECTION (REDESIGNED LUXURY EDITORIAL STYLE) ----------------- */}
       <section className="relative min-h-screen flex flex-col justify-between bg-[#061f12] overflow-hidden pt-24 pb-8 select-none">
         
-        {/* Background Layer 1: Left portrait of silver-haired smiling patient (flipped horizontally and positioned perfectly) */}
-        <div className="absolute inset-y-0 left-0 w-full lg:w-[58%] h-[50%] lg:h-full z-0 overflow-hidden pointer-events-none">
+        {/* Background Layer 1: Left portrait of silver-haired smiling patient (beautifully positioned and responsive) */}
+        <div className="absolute inset-y-0 left-0 w-full lg:w-[58%] h-[55%] sm:h-[60%] lg:h-full z-0 overflow-hidden pointer-events-none">
           <img
             src={CustomImages.silverPatient}
             alt="Silver Patient Smile, Celtic Smile Clinic"
-            className="w-full h-full object-cover transform scale-x-[-1] object-[20%_center] lg:object-[28%_center] brightness-[1.03] contrast-[1.01]"
+            className="w-full h-full object-cover scale-x-100 lg:-scale-x-100 object-[50%_22%] lg:object-[28%_center] brightness-[1.03] contrast-[1.01]"
             referrerPolicy="no-referrer"
           />
           {/* Soft overlay gradient fading to right (desktop) and down (mobile) with superb smoothness */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#061f12]/35 to-[#061f12] hidden lg:block z-10" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#061f12]/50 to-[#061f12] lg:hidden z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#061f12]/60 to-[#061f12] lg:hidden z-10" />
         </div>
 
         {/* Background Layer 2: Right clinical luxury space subtly blurred */}
