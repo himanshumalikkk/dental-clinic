@@ -236,6 +236,17 @@ export default function App() {
           <div className="flex flex-col">
             {SECTION_SERVICES.map((service, index) => {
               const isEven = index % 2 === 0;
+              const isGeneral = service.id === "general";
+
+              // Custom layout grid columns to keep the vertical/portrait General Dentistry image size balanced on laptops
+              const imageColClass = isGeneral 
+                ? `col-span-12 lg:col-span-6 ${isEven ? "" : "lg:order-2"}` 
+                : `col-span-12 lg:col-span-8 ${isEven ? "" : "lg:order-2"}`;
+
+              const textColClass = isGeneral 
+                ? `col-span-12 lg:col-span-6 flex flex-col justify-center text-left ${isEven ? "" : "lg:order-1"}` 
+                : `col-span-12 lg:col-span-4 flex flex-col justify-center text-left ${isEven ? "" : "lg:order-1"}`;
+
               return (
                 <div 
                   key={service.id}
@@ -247,16 +258,17 @@ export default function App() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-                    className={`col-span-12 lg:col-span-8 ${isEven ? "" : "lg:order-2"}`}
+                    className={imageColClass}
                   >
                     {(() => {
                       // On mobile we use aspect-square so the 1:1 clean square source images show completely uncropped.
                       // On desktop or tablet, we maintain sm:aspect-[16/10] to keep the landscape layout unchanged.
+                      // For General Dentistry's portrait image, we use a vertical aspect ratio so it displays fully and natively.
                       let aspectClass = "aspect-square sm:aspect-[16/10]";
                       let objectPositionClass = "object-center";
 
-                      if (service.id === "general") {
-                        objectPositionClass = "object-center sm:object-[center_28%]";
+                      if (isGeneral) {
+                        aspectClass = "aspect-[4/5] sm:aspect-[4/5]";
                       }
 
                       return (
@@ -280,7 +292,7 @@ export default function App() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-                    className={`col-span-12 lg:col-span-4 flex flex-col justify-center text-left ${isEven ? "" : "lg:order-1"}`}
+                    className={textColClass}
                   >
                     <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-[#b99d63] uppercase block mb-3 font-semibold">
                       {service.tag}
